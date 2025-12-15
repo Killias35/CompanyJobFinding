@@ -7,7 +7,7 @@ if project_root not in sys.path:
 
 import csv
 
-def export_to_csv(datas: dict, filename: str = "entreprises.csv"):
+def export_to_csv(datas: dict, filename: str = "entreprises"):
     """
     Exporte les entreprises au format csv
     datas est sous cette forme:
@@ -18,9 +18,10 @@ def export_to_csv(datas: dict, filename: str = "entreprises.csv"):
         }
     }
     """
-    print("Exportation au format csv...")
+    print("\n\nExportation au format csv...")
+    filename = f"{filename}-{time.time()}.csv"
     with open(filename, "w", newline="", encoding="utf-8") as f:
-        writer = csv.writer(f)
+        writer = csv.writer(f, delimiter=";")
         writer.writerow(["ENTREPRISE (PAPPERS)", "CODE NAF", "ENTREPRISE (DEPUIS FICHIER)"])
         for name, data in datas.items():
             code_naf = data["code_naf"]
