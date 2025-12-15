@@ -6,7 +6,6 @@ if project_root not in sys.path:
     sys.path.insert(0, project_root)
     
 import pandas as pd
-from conf.conf import FILE_PATH
 
 def fix_mojibake(text):
     if not isinstance(text, str):
@@ -18,7 +17,7 @@ def fix_mojibake(text):
         # Si impossible, renvoie le texte original
         return text
 
-def get_file_datas()->list[str]:
+def get_file_datas(FILE_PATH: str)->list[str]:
     if not os.path.exists(FILE_PATH):
         print(f"Le fichier {FILE_PATH} n'existe pas a coté du script, merci de le mettre dans le meme dossier")
         raise FileNotFoundError(f"Le fichier {FILE_PATH} n'existe pas")
@@ -39,5 +38,5 @@ def get_file_datas()->list[str]:
     return companies
 
 if __name__ == "__main__":
-    companies = get_file_datas()
+    companies = get_file_datas("MARSEILLE.xlsx")
     print(len(companies), companies[0:10])

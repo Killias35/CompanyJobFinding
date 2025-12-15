@@ -6,8 +6,8 @@ if project_root not in sys.path:
     sys.path.insert(0, project_root)
 
 
-VILLE = "MARSEILLE"
-FILE_PATH = "MARSEILLE.xlsx"
+VILLES = ["MARSEILLE"]
+FILES_PATH = ["MARSEILLE.xlsx"]
 ANNUAIRE_EXPERT_COMPTABLE_URL = "https://annuaire.experts-comptables.org/tous-les-cabinets-experts-comptables-par-region"
 SOCIETE_COM_URL = "https://www.societe.com/"
 
@@ -16,10 +16,10 @@ def set_parameters():
     if os.path.exists("parameters.json"):
         with open("parameters.json", "r") as f:
             parameters = json.load(f)
-            VILLE = parameters.get("ville", VILLE)
-            FILE_PATH = parameters.get("chemin_fichier", FILE_PATH)
+            VILLE = parameters.get("villes", VILLES)
+            FILE_PATH = parameters.get("chemins_fichier", FILES_PATH)
     else:
         print("parameters.json n'existe pas, création avec valeurs par defaut...")
         with open("parameters.json", "w") as f:
-            json.dump({"ville": VILLE, "chemin_fichier": FILE_PATH}, f, indent=4)
+            json.dump({"villes": VILLES, "chemins_fichier": FILES_PATH}, f, indent=4)
 set_parameters()

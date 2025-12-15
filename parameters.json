@@ -1,4 +1,8 @@
 {
-    "ville": "MARSEILLE",
-    "chemin_fichier": "MARSEILLE.xlsx"
+    "villes": [
+        "MARSEILLE"
+    ],
+    "chemins_fichier": [
+        "MARSEILLE.xlsx"
+    ]
 }
